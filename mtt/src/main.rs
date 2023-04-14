@@ -8,7 +8,7 @@ struct Cli {
     /// The pattern to look for
     command: String,
     /// The path to the file to read
-    path: std::path::PathBuf,
+    debug: bool,
 }
 
 fn main() {
