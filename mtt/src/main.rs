@@ -24,6 +24,6 @@ fn main() {
     }
 }
 
-fn start(date: ) {
+fn start() {
 
 }
