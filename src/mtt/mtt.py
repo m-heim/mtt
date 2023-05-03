@@ -1,5 +1,8 @@
 import os
 import argparse
+import datetime
+import sqlite3
+from pathlib import Path
 
 
 def main():
@@ -9,15 +12,25 @@ def main():
     
     args.func(args)
     
+def get_datetime() -> datetime:
+    return datetime.datetime.now()
+    
     
 def init(args: argparse.Namespace) -> bool:
-    userdir = os.path.expanduser('~')
-    mttdir = os.path.join(userdir, '.mtt')
+    userdir = Path.home()
+    mttdir = userdir / '.mtt'
     print('Initializing mtt now')
-    if not os.path.isdir(mttdir):
-        os.mkdir(mttdir)
+    if not mttdir.exists():
+        mttdir.mkdir()
+        print(f'Created {mttdir}')
         return True
+    else:
+        print('Nothing to do')
     return False
+
+def start() -> None:
+    current_datetime = get_datetime()
+    
     
 
 def make_parser() -> argparse.ArgumentParser:
