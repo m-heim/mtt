@@ -1,21 +1,20 @@
-import os
+import sqlite3
 import argparse
 import datetime
-import sqlite3
 from pathlib import Path
 
 
 def main():
     parser = make_parser()
     args = parser.parse_args()
-    
-    
+
     args.func(args)
-    
+
+
 def get_datetime() -> datetime:
     return datetime.datetime.now()
-    
-    
+
+
 def init(args: argparse.Namespace) -> bool:
     userdir = Path.home()
     mttdir = userdir / '.mtt'
@@ -28,17 +27,22 @@ def init(args: argparse.Namespace) -> bool:
         print('Nothing to do')
     return False
 
+
 def start() -> None:
     current_datetime = get_datetime()
-    
+
+
 def _break() -> None:
     current_datetime = get_datetime()
+
+
 def resume() -> None:
     current_datetime = get_datetime()
+
+
 def stop() -> None:
     current_datetime = get_datetime()
-    
-    
+
 
 def make_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser('mtt', description='Track work time')
@@ -46,7 +50,6 @@ def make_parser() -> argparse.ArgumentParser:
     init_parser = subparsers.add_parser('init', aliases=['i'])
     start_parser = subparsers.add_parser('start')
     stop_parser = subparsers.add_parser('resume')
-    
+
     init_parser.set_defaults(func=init)
     return parser
-    
