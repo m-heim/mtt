@@ -31,6 +31,13 @@ def init(args: argparse.Namespace) -> bool:
 def start() -> None:
     current_datetime = get_datetime()
     
+def _break() -> None:
+    current_datetime = get_datetime()
+def resume() -> None:
+    current_datetime = get_datetime()
+def stop() -> None:
+    current_datetime = get_datetime()
+    
     
 
 def make_parser() -> argparse.ArgumentParser:
